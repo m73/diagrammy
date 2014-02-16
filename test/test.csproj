@@ -60,4 +60,10 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\diagrammy\diagrammy.csproj">
+      <Project>{9DFF8A00-B4AA-41D3-BF75-07875CC1023B}</Project>
+      <Name>diagrammy</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

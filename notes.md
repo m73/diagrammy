@@ -32,3 +32,5 @@
 - Mobile support: Touch events possible. Rappid is responsive.
 - Browser compatibility: Good. IE 9+ etc.
 - Dependencies: None, but built with common libraries.
+
+## [GoJS][

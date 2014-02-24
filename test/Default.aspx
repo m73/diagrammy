@@ -6,8 +6,6 @@
 	<title>Default</title>
 </head>
 <body>
-	<form id="form1" runat="server">
-		<dia:Diagrammy id="diagrammy" runat="server" />
-	</form>
+
 </body>
 </html>

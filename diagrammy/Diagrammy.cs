@@ -12,5 +12,12 @@ namespace diagrammy
 
 			writer.Write("<div><p>Some new text.</p></div>");
 		}
+
+		protected override HtmlTextWriterTag TagKey
+		{
+			get {
+				return HtmlTextWriterTag.Div;
+			}
+		}
 	}
 }

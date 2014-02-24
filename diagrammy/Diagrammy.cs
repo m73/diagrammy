@@ -1,5 +1,5 @@
 using System;
-
+//blaha
 namespace diagrammy
 {
 	using System;
@@ -10,7 +10,7 @@ namespace diagrammy
 	{
 		protected override void RenderContents(HtmlTextWriter writer) {
 
-			writer.Write("<div><p>Some text.</p></div>");
+			writer.Write("<div><p>Some new text.</p></div>");
 		}
 	}
 }

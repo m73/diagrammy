@@ -1,5 +1,5 @@
 using System;
-//blaha
+
 namespace diagrammy
 {
 	using System;
@@ -8,9 +8,27 @@ namespace diagrammy
 
 	public class Diagrammy : WebControl
 	{
-		protected override void RenderContents(HtmlTextWriter writer) {
+		protected override void OnLoad (EventArgs e)
+		{
+			base.OnLoad (e);
+		}
 
+		protected override void OnPreRender(EventArgs e) 
+		{
+			string scriptName = "diagrammy.diagrammy.js";
+			Type scriptType = this.GetType();
+			ClientScriptManager cs = Page.ClientScript;
+			cs.RegisterClientScriptResource (scriptType, scriptName);
+			base.OnPreRender (e);
+		}
+
+		protected override void RenderContents(HtmlTextWriter writer)
+		{
 			writer.Write("<div><p>Some new text.</p></div>");
+			string scriptName = "diagrammy.diagrammy.js";
+			Type scriptType = typeof(Diagrammy);
+			ClientScriptManager cs = Page.ClientScript;
+			writer.Write ("<p>" + cs.GetWebResourceUrl (scriptType, scriptName) + "</p>");
 		}
 
 		protected override HtmlTextWriterTag TagKey

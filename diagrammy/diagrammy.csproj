@@ -39,4 +39,7 @@
     <Compile Include="Diagrammy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <EmbeddedResource Include="diagrammy.js" />
+  </ItemGroup>
 </Project>

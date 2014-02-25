@@ -6,6 +6,5 @@
 	<title>Default</title>
 </head>
 <body>
-
 </body>
 </html>

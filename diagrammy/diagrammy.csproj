@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>diagrammy</RootNamespace>
     <AssemblyName>diagrammy</AssemblyName>
+    <newfilesearch>OnLoad</newfilesearch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,5 +42,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <EmbeddedResource Include="diagrammy.js" />
+    <EmbeddedResource Include="jquery.jsPlumb-1.5.5.js" />
+    <EmbeddedResource Include="demo.js" />
+    <EmbeddedResource Include="demo.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagrammy.ascx" />
   </ItemGroup>
 </Project>

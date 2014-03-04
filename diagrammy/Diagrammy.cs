@@ -28,7 +28,7 @@ namespace diagrammy
 			string scriptName = "diagrammy.diagrammy.js";
 			Type scriptType = typeof(Diagrammy);
 			ClientScriptManager cs = Page.ClientScript;
-			writer.Write ("<p>" + cs.GetWebResourceUrl (scriptType, scriptName) + "</p>");
+			writer.Write ("<script src='"+ cs.GetWebResourceUrl (scriptType, scriptName) + "'></script>");
 		}
 
 		protected override HtmlTextWriterTag TagKey

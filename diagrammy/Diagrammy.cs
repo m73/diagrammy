@@ -5,6 +5,7 @@ namespace diagrammy
 	using System;
 	using System.Web.UI;
 	using System.Web.UI.WebControls;
+	using System.Collections.Generic;
 
 	public class Diagrammy : WebControl
 	{
@@ -24,7 +25,6 @@ namespace diagrammy
 
 		protected override void RenderContents(HtmlTextWriter writer)
 		{
-			writer.Write("<div><p>Some new text.</p></div>");
 			string diaScriptName = "diagrammy.diagrammy.js";
 			string plumbScriptName = "diagrammy.jquery.jsPlumb-1.5.5.js";
 			string demoScriptName = "diagrammy.demo.js";
@@ -50,6 +50,24 @@ namespace diagrammy
 			get {
 				return HtmlTextWriterTag.Div;
 			}
+		}
+	}
+
+	// An instance of this class defines rules and style of a single diagram node
+	// which gets connected to other nodes.
+	public class Node {
+		// Node types(string) allowed to connect to/from this node and how many(int) of them can connect/be connected.
+		// If int is n, and n > 0, 1 to n can be connected. Otherwise any number can be connected.
+		public Dictionary<string, int> inputs;
+		public Dictionary<string, int> outputs;
+		public string label; // Label shown on the node on the diagram.
+		public string type; // Type of the node. Used as an identifier. (may be used internally and not changed by API user)
+		public string shape; // Shape as shown on diagram. Can be "circle", "square" or "rectangle".
+		public string color; // Color of node. Can be any CSS color name or hex value, e.g. "Red", "#DC143C".
+
+		// Used in the control's RenderContents to place a div in the DOM representingthe node.
+		public void RenderContents(HtmlTextWriter writer) {
+			writer.Write("<div> </div>"); // Needs configuring by Node's properties.
 		}
 	}
 }

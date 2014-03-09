@@ -13,6 +13,9 @@ namespace test
 
 			// Initialize diagrammy here and add to page.
 			Diagrammy dia = new Diagrammy ();
+
+			// Configure the diagrammy.
+
 			this.Controls.Add (dia);
 		}
 	}

@@ -9,6 +9,16 @@ namespace diagrammy
 
 	public class Diagrammy : WebControl
 	{
+		public List<Node> Nodes; // Nodes that will be rendered in the DOM.
+
+		public Diagrammy() : base() {
+			Nodes = new List<Node>();
+		}
+
+		public void AddNode(Node node) {
+			this.Nodes.Add(node);
+		}
+
 		protected override void OnLoad (EventArgs e)
 		{
 			base.OnLoad (e);
@@ -31,6 +41,7 @@ namespace diagrammy
 			Type scriptType = typeof(Diagrammy);
 			ClientScriptManager cs = Page.ClientScript;
 			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.demo.css")+"'/>");
+			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.demo-all.css")+"'/>");
 			writer.Write("<div class='demo flowchart-demo' id='flowchart-demo'>");
 			writer.Write("<div class='window' id='flowchartWindow1'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow2'><strong>1</strong><br/><br/></div>");
@@ -55,18 +66,39 @@ namespace diagrammy
 
 	// An instance of this class defines rules and style of a single diagram node
 	// which gets connected to other nodes.
-	public class Node {
-		// Node types(string) allowed to connect to/from this node and how many(int) of them can connect/be connected.
+	public class NodeType {
+		// Node allowed to connect to/from this node and how many(int) of them can connect/be connected.
 		// If int is n, and n > 0, 1 to n can be connected. Otherwise any number can be connected.
-		public Dictionary<string, int> inputs;
-		public Dictionary<string, int> outputs;
+		public Dictionary<NodeType, int> inputs;
+		public Dictionary<NodeType, int> outputs;
 		public string label; // Label shown on the node on the diagram.
 		public string type; // Type of the node. Used as an identifier. (may be used internally and not changed by API user)
 		public string shape; // Shape as shown on diagram. Can be "circle", "square" or "rectangle".
 		public string color; // Color of node. Can be any CSS color name or hex value, e.g. "Red", "#DC143C".
 
+		public NodeType(string label, string shape, string color) {
+			this.label = label;
+			this.shape = shape;
+			this.color = color;
+		}
+
+
+	}
+
+	// A node instance which can be added to a diagram.
+	public class Node {
+		public NodeType type; // Rules and styles for this particular node.
+		public HashSet<Node> outputTo = new HashSet<Node>(); // Nodes that this node has connected to.
+		public HashSet<Node> inputFrom = new HashSet<Node>(); // Nodes from which this node has been connected to.
+
+		public Node(NodeType type) {
+			this.type = type;
+		}
+
 		// Used in the control's RenderContents to place a div in the DOM representingthe node.
 		public void RenderContents(HtmlTextWriter writer) {
+			//string shapeClass = "diagrammy_" + this.type.shape;
+			//string color = this.type.color;
 			writer.Write("<div> </div>"); // Needs configuring by Node's properties.
 		}
 	}

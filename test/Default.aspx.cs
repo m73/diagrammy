@@ -15,6 +15,9 @@ namespace test
 			Diagrammy dia = new Diagrammy ();
 
 			// Configure the diagrammy.
+			NodeType electroMeter = new NodeType ("M?", "Circle", "Red");
+			Node eo = new Node (electroMeter);
+			dia.AddNode (eo);
 
 			this.Controls.Add (dia);
 		}

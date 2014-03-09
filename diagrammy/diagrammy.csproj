@@ -45,6 +45,7 @@
     <EmbeddedResource Include="jquery.jsPlumb-1.5.5.js" />
     <EmbeddedResource Include="demo.js" />
     <EmbeddedResource Include="demo.css" />
+    <EmbeddedResource Include="demo-all.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagrammy.ascx" />

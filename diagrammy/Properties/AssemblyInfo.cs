@@ -13,6 +13,7 @@ using System.Web.UI;
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 // Add client side files.
+[assembly: WebResource("diagrammy.demo-all.css", "text/css")]
 [assembly: WebResource("diagrammy.demo.css", "text/css")]
 [assembly: WebResource("diagrammy.jquery.jsPlumb-1.5.5.js", "application/javascript")]
 [assembly: WebResource("diagrammy.demo.js", "application/javascript")]

@@ -9,24 +9,25 @@ namespace diagrammy
 
 	public class Diagrammy : WebControl
 	{
-		public List<Node> Nodes; // Nodes that will be rendered in the DOM.
-
-		public Diagrammy() : base() {
-			Nodes = new List<Node>();
+		public Diagrammy() : base() 
+		{
+			this.CreateControlCollection ();
 		}
 
-		public void AddNode(Node node) {
-			this.Nodes.Add(node);
+		public void AddNode(Node node) 
+		{
+			this.Controls.Add(node);
 		}
 
-		protected override void CreateChildControls() {
-			/*
-			for (int i = 0; i < this.Nodes.Count; i++) {
-				this.Controls.Add (this.Nodes [i]);
-			}*/
-			NodeType electroMeter = new NodeType ("M?", "Circle", "Red");
-			Node eo = new Node (electroMeter);
-			this.Controls.Add (eo);
+		protected override void RenderChildren(HtmlTextWriter writer) 
+		{
+			if (this.HasControls()) 
+			{
+				for(int i = 0; i < this.Controls.Count; i++) 
+				{
+					this.Controls[i].RenderControl(writer);
+				}
+			}         
 		}
 
 		protected override void OnLoad (EventArgs e)
@@ -62,7 +63,7 @@ namespace diagrammy
 			writer.Write("<div class='window' id='flowchartWindow2'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow3'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow4'><strong>1</strong><br/><br/></div>");
-			                
+			this.RenderChildren (writer);
 			                        
 			writer.Write("<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>");
 			writer.Write("<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>");
@@ -113,15 +114,18 @@ namespace diagrammy
 		}
 
 		// Add classes and other attributes to node here.
-		protected override void AddAttributesToRender(HtmlTextWriter writer) {
-			string classes = this.type.shape;
+		protected override void AddAttributesToRender(HtmlTextWriter writer) 
+		{
+			string classes = "diagrammy-"+this.type.shape;
 
 			writer.AddAttribute (HtmlTextWriterAttribute.Class, classes);
-			writer.AddAttribute (HtmlTextWriterAttribute.Id, "diagrammy-node1");
+			writer.AddAttribute (HtmlTextWriterAttribute.Bgcolor, this.type.color);
 		}
 
 		// What is rendered inside this Node (i.e. inside the div it represents).
-		protected override void RenderContents(HtmlTextWriter writer) {
+		protected override void RenderContents(HtmlTextWriter writer) 
+		{
+			writer.Write (this.type.label);
 		}
 
 		protected override HtmlTextWriterTag TagKey {

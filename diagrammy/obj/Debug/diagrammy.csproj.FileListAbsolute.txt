@@ -1,0 +1,4 @@
+C:\Users\DanielEduardo\git\diagrammy\diagrammy\bin\Debug\diagrammy.dll
+C:\Users\DanielEduardo\git\diagrammy\diagrammy\bin\Debug\diagrammy.pdb
+C:\Users\DanielEduardo\git\diagrammy\diagrammy\obj\Debug\diagrammy.dll
+C:\Users\DanielEduardo\git\diagrammy\diagrammy\obj\Debug\diagrammy.pdb

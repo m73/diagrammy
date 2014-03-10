@@ -58,6 +58,7 @@ namespace diagrammy
 			ClientScriptManager cs = Page.ClientScript;
 			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.demo.css")+"'/>");
 			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.demo-all.css")+"'/>");
+			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.nodes.css")+"'/>");
 			writer.Write("<div class='window' id='flowchartWindow1'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow2'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow3'><strong>1</strong><br/><br/></div>");

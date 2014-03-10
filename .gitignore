@@ -1,4 +1,4 @@
-*.userprefs
+**/*.userprefs
 **/bin/**/*
 **/obj/**/*
 workspace

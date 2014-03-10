@@ -120,7 +120,8 @@ namespace diagrammy
 			string classes = "diagrammy-"+this.type.shape;
 
 			writer.AddAttribute (HtmlTextWriterAttribute.Class, classes);
-			writer.AddAttribute (HtmlTextWriterAttribute.Bgcolor, this.type.color);
+			writer.AddAttribute (HtmlTextWriterAttribute.Id, "somediv");
+			writer.AddAttribute (HtmlTextWriterAttribute.Style, "background: " + this.type.color);
 		}
 
 		// What is rendered inside this Node (i.e. inside the div it represents).

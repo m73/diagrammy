@@ -1,0 +1,17 @@
+.diagrammy-circle {
+	width: 100px;
+	height: 100px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+        text-align:center;
+        line-height: 100px; vertical-align:middle;
+        border:1px solid #346789;
+}
+.diagrammy-square {
+	width: 100px;
+	height: 100px;
+        text-align:center;
+        line-height: 100px; vertical-align:middle;
+        border:1px solid #346789;
+}

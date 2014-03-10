@@ -46,6 +46,7 @@
     <EmbeddedResource Include="demo.js" />
     <EmbeddedResource Include="demo.css" />
     <EmbeddedResource Include="demo-all.css" />
+    <EmbeddedResource Include="nodes.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagrammy.ascx" />

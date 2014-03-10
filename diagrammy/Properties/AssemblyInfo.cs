@@ -18,7 +18,7 @@ using System.Web.UI;
 [assembly: WebResource("diagrammy.jquery.jsPlumb-1.5.5.js", "application/javascript")]
 [assembly: WebResource("diagrammy.demo.js", "application/javascript")]
 [assembly: WebResource("diagrammy.diagrammy.js", "application/javascript")]
-
+[assembly: WebResource("diagrammy.nodes.css", "text/css")]
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.

@@ -98,8 +98,6 @@ namespace diagrammy
 			this.shape = shape;
 			this.color = color;
 		}
-
-
 	}
 
 	// A node instance which can be added to a diagram.

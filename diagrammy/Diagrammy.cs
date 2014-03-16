@@ -9,9 +9,14 @@ namespace diagrammy
 
 	public class Diagrammy : WebControl
 	{
+		public SaveButton save;
+		public LoadButton load;
+
 		public Diagrammy() : base() 
 		{
 			this.CreateControlCollection ();
+			this.save = new SaveButton ();
+			this.load = new LoadButton ();
 		}
 
 		public void AddNode(Node node) 
@@ -46,8 +51,6 @@ namespace diagrammy
 
 		protected override void AddAttributesToRender (HtmlTextWriter writer)
 		{
-			writer.AddAttribute (HtmlTextWriterAttribute.Class, "demo flowchart-demo");
-			writer.AddAttribute (HtmlTextWriterAttribute.Id, "flowchart-demo");
 		}
 
 		protected override void RenderContents(HtmlTextWriter writer)
@@ -60,11 +63,17 @@ namespace diagrammy
 			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.demo.css")+"'/>");
 			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.demo-all.css")+"'/>");
 			writer.Write ("<link rel='stylesheet' href='"+cs.GetWebResourceUrl(scriptType, "diagrammy.nodes.css")+"'/>");
+			writer.AddAttribute (HtmlTextWriterAttribute.Class, "demo flowchart-demo");
+			writer.AddAttribute (HtmlTextWriterAttribute.Id, "flowchart-demo");
+			writer.RenderBeginTag (HtmlTextWriterTag.Div);
 			writer.Write("<div class='window' id='flowchartWindow1'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow2'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow3'><strong>1</strong><br/><br/></div>");
 			writer.Write("<div class='window' id='flowchartWindow4'><strong>1</strong><br/><br/></div>");
 			this.RenderChildren (writer);
+			writer.RenderEndTag ();
+			this.load.RenderControl (writer);
+			this.save.RenderControl (writer);
 			                        
 			writer.Write("<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>");
 			writer.Write("<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js'></script>");
@@ -132,6 +141,24 @@ namespace diagrammy
 			get {
 				return HtmlTextWriterTag.Div;
 			}
+		}
+	}
+
+	public class SaveButton : Button
+	{
+		public SaveButton() : base() 
+		{
+			this.Text = "Save";
+			this.OnClientClick = "Diagram.save()";
+		}
+	}
+
+	public class LoadButton : Button
+	{
+		public LoadButton() : base() 
+		{
+			this.Text = "Load";
+			this.OnClientClick = "Diagram.save()";
 		}
 	}
 }

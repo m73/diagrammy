@@ -12,7 +12,7 @@ namespace test
 			base.OnInit(e);
 
 			// Initialize diagrammy here and add to page.
-			Diagrammy dia = new Diagrammy ();
+			Diagram dia = new Diagram ();
 
 			// Configure the diagrammy.
 			NodeType electroMeter = new NodeType ("M?", "circle", "red");

@@ -34,21 +34,2177 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=c7439020c8fedf87">
+      <Private>False</Private>
+      <Package>monodevelop</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Diagrammy.cs" />
+    <Compile Include="NodeType.cs" />
+    <Compile Include="SaveButton.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="Diagram.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <EmbeddedResource Include="diagrammy.js" />
-    <EmbeddedResource Include="jquery.jsPlumb-1.5.5.js" />
-    <EmbeddedResource Include="demo.js" />
-    <EmbeddedResource Include="demo.css" />
-    <EmbeddedResource Include="demo-all.css" />
-    <EmbeddedResource Include="nodes.css" />
+    <EmbeddedResource Include="css\demo-all.css" />
+    <EmbeddedResource Include="css\demo.css" />
+    <EmbeddedResource Include="js\demo.js" />
+    <EmbeddedResource Include="css\nodes.css" />
+    <EmbeddedResource Include="js\diagrammy.js" />
+    <EmbeddedResource Include="lib\jquery.jsPlumb-1.5.5.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagrammy.ascx" />
+    <Folder Include="js\" />
+    <Folder Include="css\" />
+    <Folder Include="lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagrammy.ascx">
+      <Visible>False</Visible>
+    </None>
+    <None Include="JsonParser.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\license.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\readme.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\Net20\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\Net35\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\Net40\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\Net45\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\Portable\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\Portable40\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Bin\WinRT\Newtonsoft.Json.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Build\Newtonsoft.Json.nuspec">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Build\build.ps1">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Build\install.ps1">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Build\runbuild.cmd">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Build\runbuild.ps1">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\ConditionalProperties.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\ContractResolver.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\ConvertingJSONandXML.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\CreatingLINQtoJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\CustomCreationConverter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\DatesInJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Introduction.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\JsonNetVsDotNetSerializers.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\JsonNetVsWindowsDataJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\JsonSchema.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\LINQtoJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\ParsingLINQtoJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Performance.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\PreserveObjectReferences.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\QueryingLINQtoJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\ReadingWritingJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\ReducingSerializedJSONSize.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SelectToken.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializationAttributes.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializationCallbacks.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializationErrorHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializationGuide.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializationSettings.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializationTracing.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializingCollections.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializingJSON.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\SerializingJSONFragments.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\cross.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\doc.content">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\doc.shfbproj">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\doc.sitemap">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\donate.gif">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\jsonnetwindowsdatajson.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\license.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\logo.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\performance.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\readme.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\tick.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Samples.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Bson\DeserializeFromBson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Bson\DeserializeFromBsonCollection.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Bson\SerializeToBson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Json\ReadJsonWithJsonTextReader.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Json\WriteJsonWithJsonTextWriter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\Clone.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateJsonAnonymousObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateJsonCollectionInitializer.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateJsonDeclaratively.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateJsonDynamic.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateJsonJTokenWriter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateJsonManually.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateReader.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\CreateWriter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\DeepEquals.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\DeserializeWithLinq.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\FromObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\JObjectProperties.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\JValueCast.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\JValueValue.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ModifyJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ParseJsonAny.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ParseJsonArray.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ParseJsonObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\QueryJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\QueryJsonDynamic.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\QueryJsonLinq.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\QueryJsonSelectToken.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\QueryJsonSelectTokenWithLinq.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ReadJTokenFromBson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ReadJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\SerializeWithLinq.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ToObjectComplex.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ToObjectGeneric.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ToObjectType.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ToString.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\ToStringJsonConverter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\WriteJTokenToBson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Linq\WriteToJsonFile.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\CreateJsonSchemaManually.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\JTokenIsValid.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\JTokenIsValidWithMessages.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\JTokenValidateWithEvent.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\JsonSchemaParse.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\JsonValidatingReaderAndSerializer.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\LoadJsonSchemaFromFile.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\RefJsonSchemaResolver.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Schema\SaveJsonSchemaToFile.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\CustomContractResolver.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\CustomJsonConverter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\CustomTraceWriter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DataContractAndDataMember.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DefaultValueAttributeIgnore.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DefaultValueHandlingIgnore.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeAnonymousType.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeCollection.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeConstructorHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeCustomCreationConverter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeDataSet.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeDictionary.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeMissingMemberHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeObjectCreationHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\DeserializeWithJsonSerializerFromFile.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\ErrorHandlingAttribute.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\ErrorHandlingEvent.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonConverterAttributeClass.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonConverterAttributeProperty.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonObjectAttributeOptIn.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonObjectAttributeOverrideIEnumerable.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonPropertyItemLevelSetting.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonPropertyName.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonPropertyOrder.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonPropertyPropertyLevelSetting.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\JsonPropertyRequired.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\MaxDepth.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\NullValueHandlingIgnore.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\PopulateObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\PreserveReferencesHandlingObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\PropertyJsonIgnore.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\ReferenceLoopHandlingIgnore.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializationCallbackAttributes.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeCollection.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeConditionalProperty.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeContractResolver.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeDataSet.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeDateFormatHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeDateTimeZoneHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeDictionary.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeObject.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeRawJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeSerializationBinder.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeTypeNameHandling.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeUnindentedJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeWithJsonConverters.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\SerializeWithJsonSerializerToFile.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Serializer\TraceWriter.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Xml\ConvertJsonToXml.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Xml\ConvertXmlToJson.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Doc\Samples\Xml\ConvertXmlToJsonForceArray.aml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.sln.DotSettings">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\ConstructorHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\DateFormatHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\DateParseHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\DateTimeZoneHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\DefaultValueHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Dynamic.snk">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\FloatFormatHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\FloatParseHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\FormatterAssemblyStyle.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Formatting.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\IJsonLineInfo.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonArrayAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonConstructorAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonContainerAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonConvert.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonConverterAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonConverterCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonDictionaryAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonException.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonExtensionDataAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonIgnoreAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonObjectAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonPosition.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonPropertyAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonReaderException.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonSerializationException.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonSerializer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonSerializerSettings.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonTextReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonTextWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonToken.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonValidatingReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\JsonWriterException.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\MemberSerialization.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\MissingMemberHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Newtonsoft.Json.ruleset">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\NullValueHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\ObjectCreationHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\PreserveReferencesHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\ReferenceLoopHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Required.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\SerializationBinder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\StringEscapeHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\TraceLevel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\TypeNameHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\WriteState.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonBinaryType.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonBinaryWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonObjectId.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonToken.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonType.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Bson\BsonWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\BinaryConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\BsonObjectIdConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\CustomCreationConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\DataSetConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\DataTableConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\DateTimeConverterBase.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\DiscriminatedUnionConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\EntityKeyMemberConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\ExpandoObjectConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\IsoDateTimeConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\JavaScriptDateTimeConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\JsonValueConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\KeyValuePairConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\RegexConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\StringEnumConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\VersionConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Converters\XmlNodeConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\Extensions.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\IJEnumerable.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JArray.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JConstructor.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JContainer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JEnumerable.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JProperty.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JPropertyDescriptor.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JPropertyKeyedCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JRaw.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JToken.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JTokenEqualityComparer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JTokenReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JTokenType.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JTokenWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JValue.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\ArrayIndexFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\ArrayMultipleIndexFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\ArraySliceFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\FieldFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\FieldMultipleFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\JPath.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\PathFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\QueryExpression.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\QueryFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Linq\JsonPath\ScanFilter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Properties\AssemblyInfo.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\Extensions.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchema.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaBuilder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaConstants.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaException.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaGenerator.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaModelBuilder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaNode.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaNodeCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaType.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\JsonSchemaWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\UndefinedSchemaIdHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\ValidationEventArgs.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Schema\ValidationEventHandler.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\CachedAttributeGetter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\CamelCasePropertyNamesContractResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\DefaultContractResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\DefaultReferenceResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\DefaultSerializationBinder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\DiagnosticsTraceWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\DynamicValueProvider.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\ErrorContext.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\ErrorEventArgs.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\ExpressionValueProvider.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\IContractResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\IReferenceResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\ITraceWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\IValueProvider.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonArrayContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonContainerContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonDictionaryContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonDynamicContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonFormatterConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonISerializableContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonLinqContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonObjectContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonPrimitiveContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonProperty.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonPropertyCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalBase.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonSerializerInternalWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonSerializerProxy.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonStringContract.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\JsonTypeReflector.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\LateBoundMetadataTypeAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\MemoryTraceWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\ObjectConstructor.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\OnErrorAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\ReflectionValueProvider.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\TraceJsonReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Serialization\TraceJsonWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\Base64Encoder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\BidirectionalDictionary.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\CollectionUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\CollectionWrapper.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ConvertUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DateTimeParser.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DateTimeUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DictionaryWrapper.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DynamicProxy.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DynamicProxyMetaObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DynamicReflectionDelegateFactory.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DynamicUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\DynamicWrapper.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\EnumUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\EnumValue.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\EnumValues.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ExpressionReflectionDelegateFactory.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ILGeneratorExtensions.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ImmutableCollectionsUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\JavaScriptUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\LateBoundReflectionDelegateFactory.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\LinqBridge.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\MathUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\MethodCall.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\MiscellaneousUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ReflectionDelegateFactory.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ReflectionUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\StringBuffer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\StringReference.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\StringUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ThreadSafeStore.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\TypeExtensions.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json\Utilities\ValidationUtils.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\ExceptionTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\FileSystemEntityModel.Designer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\FileSystemEntityModel.edmx">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\JsonArrayAttributeTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\JsonConvertTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\JsonTextReaderTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\JsonTextWriterTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\JsonValidatingReaderTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Newtonsoft.Json.Tests.WinRT_TemporaryKey.pfx">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Package.appxmanifest">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\PerformanceTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\PoisonText.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestFixtureBase.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\bunny_pancake.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\packages.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Bson\BsonReaderTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Bson\BsonWriterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\BinaryConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\CustomCreationConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\DataSetConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\DataTableConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\ExpandoObjectConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\IsoDateTimeConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\JavaScriptDateTimeConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\JsonValueConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\ObjectIdConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\RegexConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\StringEnumConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\VersionConverterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Converters\XmlNodeConverterTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\ConditionalPropertiesTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\ConvertingJsonAndXmlTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\JsonNetVsWindowsDataJsonTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\JsonSchemaTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\PerformanceTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\ReadingAndWritingJsonTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\SerializationTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\TraceWriterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Bson\DeserializeFromBson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Bson\DeserializeFromBsonCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Bson\SerializeToBson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Json\ReadJsonWithJsonTextReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Json\WriteJsonWithJsonTextWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\Clone.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateJsonAnonymousObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateJsonCollectionInitializer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateJsonDeclaratively.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateJsonDynamic.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateJsonJTokenWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateJsonManually.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateReader.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\CreateWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\DeepEquals.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\DeserializeWithLinq.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\FromObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\JObjectProperties.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\JValueCast.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\JValueValue.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ModifyJson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ParseJsonAny.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ParseJsonArray.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ParseJsonObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\QueryJson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\QueryJsonDynamic.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\QueryJsonLinq.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\QueryJsonSelectToken.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\QueryJsonSelectTokenWithLinq.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ReadJTokenFromBson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ReadJson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\SerializeWithLinq.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ToObjectComplex.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ToObjectGeneric.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ToObjectType.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ToString.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\ToStringJsonConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\WriteJTokenToBson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Linq\WriteToJsonFile.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\CreateJsonSchemaManually.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\JTokenIsValid.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\JTokenIsValidWithMessages.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\JTokenValidateWithEvent.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\JsonSchemaParse.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\JsonValidatingReaderAndSerializer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\LoadJsonSchemaFromFile.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\RefJsonSchemaResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Schema\SaveJsonSchemaToFile.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\CustomContractResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\CustomJsonConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\CustomTraceWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DataContractAndDataMember.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DefaultValueAttributeIgnore.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DefaultValueHandlingIgnore.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeAnonymousType.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeConstructorHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeCustomCreationConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeDataSet.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeDictionary.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeMissingMemberHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeObjectCreationHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\DeserializeWithJsonSerializerFromFile.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\ErrorHandlingAttribute.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\ErrorHandlingEvent.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonConverterAttributeClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonConverterAttributeProperty.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonObjectAttributeOptIn.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonObjectAttributeOverrideIEnumerable.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonPropertyItemLevelSetting.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonPropertyName.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonPropertyOrder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonPropertyPropertyLevelSetting.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\JsonPropertyRequired.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\MaxDepth.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\NullValueHandlingIgnore.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\PopulateObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\PreserveReferencesHandlingObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\PropertyJsonIgnore.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\ReferenceLoopHandlingIgnore.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializationCallbackAttributes.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeConditionalProperty.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeContractResolver.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeDataSet.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeDateFormatHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeDateTimeZoneHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeDictionary.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeRawJson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeSerializationBinder.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeTypeNameHandling.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeUnindentedJson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeWithJsonConverters.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\SerializeWithJsonSerializerToFile.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Serializer\TraceWriter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Xml\ConvertJsonToXml.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Xml\ConvertXmlToJson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Documentation\Samples\Xml\ConvertXmlToJsonForceArray.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Images\UnitTestLogo.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Images\UnitTestSmallLogo.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Images\UnitTestSplashScreen.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Images\UnitTestStoreLogo.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\DynamicTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JArrayTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JConstructorTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JObjectTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JPropertyTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JRawTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JTokenEqualityComparerTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JTokenReaderTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JTokenTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JTokenWriterTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JValueTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\LinqToJsonTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\ComponentModel\BindingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\ComponentModel\JPropertyDescriptorTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JsonPath\JPathExecuteTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JsonPath\JPathParseTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Linq\JsonPath\QueryExpressionTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\Department.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\DepartmentConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\GuidByteArrayConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\LinqToSqlClasses.dbml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\LinqToSqlClasses.dbml.layout">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\LinqToSqlClasses.designer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\LinqToSqlClassesSerializationTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\Person.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\LinqToSql\Role.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Properties\AssemblyInfo.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\ExtensionsTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\JsonSchemaBuilderTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\JsonSchemaGeneratorTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\JsonSchemaModelBuilderTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\JsonSchemaNodeTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\JsonSchemaSpecTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\JsonSchemaTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\additionalItems.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\additionalProperties.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\dependencies.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\disallow.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\divisibleBy.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\enum.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\extends.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\items.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\maxItems.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\maxLength.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\maximum.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\minItems.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\minLength.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\minimum.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\pattern.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\patternProperties.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\properties.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\ref.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\required.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\type.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Schema\Specs\uniqueItems.json">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\CamelCasePropertyNamesContractResolverTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\ConstructorHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\ContractResolverTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\DefaultValueHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\DynamicTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\EntitiesSerializationTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\ImmutableCollectionsTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\JsonPropertyCollectionTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\JsonSerializerTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\MissingMemberHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\NullValueHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\PopulateTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\PreserveReferencesHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\ReferenceLoopHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\SerializationErrorHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\SerializationEventAttributeTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\TraceWriterTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\TypeNameHandlingTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Serialization\WebApiIntegrationTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\AbstractGenericBase.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ArgumentConverterPrecedenceClassConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Article.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ArticleCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\BadJsonPropertyClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Bar.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Car.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\CircularReferenceClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\CircularReferenceWithIdClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ClassAndMemberConverterClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ClassConverterPrecedenceClassConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ClassWithArray.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ClassWithGuid.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Computer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ConstructorCaseSensitivityClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ConstructorReadonlyFields.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Container.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Content.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ContentBaseClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ContentSubClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ConverableMembers.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ConverterPrecedenceClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ConverterPrecedenceClassConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\CustomerDataSet.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\DateTimeErrorObjectCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\DateTimeTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\DefaultValueAttributeTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\DictionaryInterfaceClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\DoubleClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\EmployeeReference.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Event.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Foo.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\GenericImpl.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\GenericListAndDictionaryInterfaceProperties.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\GetOnlyPropertyClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\GoogleMapGeocoderStructure.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\HolderClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\IPrivateImplementationA.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\IPrivateImplementationB.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\IPrivateOverriddenImplementation.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\IncompatibleJsonAttributeClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\InterfacePropertyTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Invoice.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\JaggedArray.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\JsonIgnoreAttributeOnClassTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\JsonIgnoreAttributeTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\JsonPropertyClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\JsonPropertyWithHandlingValues.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ListErrorObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ListErrorObjectCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ListOfIds.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ListTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\LogEntry.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\MemberConverterClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\MemberConverterPrecedenceClassConverter.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\MethodExecutorObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Movie.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\MyClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Name.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\NonRequest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\NullableDateTimeTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ObjectArrayPropertyTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Person.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PersonError.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PersonPropertyClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PersonRaw.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PhoneNumber.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PrivateConstructorTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PrivateConstructorWithPublicParametizedConstructorTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PrivateImplementationAClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PrivateImplementationBClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PrivateMembersClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Product.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ProductCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\ProductShort.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PropertyCase.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PublicParametizedConstructorRequiringConverterTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PublicParametizedConstructorTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PublicParametizedConstructorWithNonPropertyParameterTestClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\PublicParametizedConstructorWithPropertyNameConflict.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\RequestOnly.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\RequiredMembersClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\RoleTransfer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SearchResult.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SerializationEventTestDictionary.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SerializationEventTestList.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SerializationEventTestObject.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SerializationEventTestObjectWithConstructor.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SetOnlyPropertyClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SetOnlyPropertyClass2.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Shortie.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\Store.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\StoreColor.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\StructTest.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SubKlass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\SuperKlass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\TypeClass.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\TypedSubHashtable.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\UserNullable.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\VersionKeyedCollection.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\TestObjects\WagePerson.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Utilities\DateTimeUtilsTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Utilities\DynamicReflectionDelegateFactoryTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Utilities\ExpressionReflectionDelegateFactoryTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Utilities\ReflectionUtilsTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\Newtonsoft.Json.Tests\Utilities\StringUtilsTests.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\repositories.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\Microsoft.Bcl.Immutable.1.0.27\License-Stable.rtf">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\Microsoft.Bcl.Immutable.1.0.27\Microsoft.Bcl.Immutable.1.0.27.nupkg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\Microsoft.Bcl.Immutable.1.0.27\Microsoft.Bcl.Immutable.1.0.27.nuspec">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\Microsoft.Bcl.Immutable.1.0.27\lib\portable-net45+win8+wp8\System.Collections.Immutable.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\NUnit.2.6.2\NUnit.2.6.2.nupkg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\NUnit.2.6.2\NUnit.2.6.2.nuspec">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\NUnit.2.6.2\license.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Src\packages\NUnit.2.6.2\lib\nunit.framework.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\7-zip\7-zip.chm">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\7-zip\copying.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\7-zip\license.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\7-zip\readme.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\nunit-agent-x86.exe.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\nunit-agent.exe.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\nunit-console-x86.exe.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\nunit-console.exe.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\nunit-x86.exe.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\nunit.exe.config">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\framework\nunit.framework.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\NSubstitute.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Rhino.Mocks.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Ellipsis.gif">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\pinned.gif">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\unpinned.gif">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Circles\Failure.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Circles\Ignored.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Circles\Inconclusive.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Circles\Skipped.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Circles\Success.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Classic\Failure.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Classic\Ignored.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Classic\Inconclusive.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Classic\Skipped.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Classic\Success.jpg">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Default\Failure.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Default\Ignored.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Default\Inconclusive.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Default\Skipped.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Default\Success.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Visual Studio\Failure.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Visual Studio\Ignored.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Visual Studio\Inconclusive.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Visual Studio\SeriousWarning.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Visual Studio\Skipped.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\NUnit\lib\Images\Tree\Visual Studio\Success.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Packages\json.net\Source\Tools\PSake\psake.psm1">
+      <Visible>False</Visible>
+    </None>
   </ItemGroup>
 </Project>

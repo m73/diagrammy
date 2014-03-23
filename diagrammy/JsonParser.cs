@@ -17,8 +17,8 @@ namespace diagrammy
 				serializer.WriteObject(stream, obj);
 				return Encoding.Default.GetString(stream.ToArray());
 			}
-			*/
 		}
+		*/
 	}
 }
 

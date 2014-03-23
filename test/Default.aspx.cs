@@ -15,9 +15,20 @@ namespace test
 			Diagram dia = new Diagram ();
 
 			// Configure the diagrammy.
-			NodeType electroMeter = new NodeType ("M?", "circle", "red");
-			Node eo = new Node (electroMeter);
+			NodeType electroMeter = new NodeType ("circle", "red");
+			NodeType building = new NodeType ("square", "grey");
+			electroMeter.InputRule (building, "one");
+			building.OutputRule (electroMeter, "one");
+			Node eo = new Node ("M?", electroMeter);
+			Node myHouse = new Node("My house", building);
+			Node otherHouse = new Node ("Other house", building);
+			Node eo2 = new Node ("M10", electroMeter);
+			eo.Connect (myHouse);
+			otherHouse.Connect (eo);
 			dia.AddNode (eo);
+			dia.AddNode (myHouse);
+			dia.AddNode (eo2);
+			dia.AddNode (otherHouse);
 
 			this.Controls.Add (dia);
 		}

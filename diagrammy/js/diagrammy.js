@@ -1,1 +1,1 @@
-console.log("Javscript loaded.");
+Diagrammy = {};

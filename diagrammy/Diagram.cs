@@ -17,14 +17,16 @@ namespace diagrammy
 		/// Sends back altered diagram state in ajax manner.
 		/// </summary>
 		public SaveButton save;
-		private string JsonData = "Diagrammy.data = "; // javascript definition of Properties.
 		private DiagramProperties Properties; // Serializable object presenting all of its data.
 
-		public Diagram() : base() 
+		public Diagram(Object objectDiagram = null) : base() 
 		{
 			this.CreateControlCollection ();
 			this.save = new SaveButton ();
 			this.Properties = new DiagramProperties ();
+			if (objectDiagram != null) {
+				this.BuildFromObject(objectDiagram);
+			}
 		}
 
 		/// <summary>
@@ -49,13 +51,17 @@ namespace diagrammy
 		}
 
 		/// <summary>
-		/// Usage: d.BuildJsonData().
-		/// Before:
-		/// After: d.JsonData contains all necessary diagram information of d
-		/// 	   to build the diagram in the browser.
+		/// Make a json string representing the diagram. 
 		/// </summary>
-		private void BuildJsonData() {
-			this.JsonData += JsonConvert.SerializeObject(this.Properties) + ";";
+		private string ToJson() {
+			return JsonConvert.SerializeObject(this.Properties);
+		}
+
+		/// <summary>
+		/// Make this diagram mirror the diagram represented by the json string.
+		/// </summary>
+		private void BuildFromObject(Object objectDiagram) {
+
 		}
 
 		protected override void RenderChildren(HtmlTextWriter writer) 
@@ -83,7 +89,6 @@ namespace diagrammy
 		protected override void OnPreRender(EventArgs e) 
 		{
 			base.OnPreRender (e);
-            BuildJsonData();
 		}
 
 		protected override void AddAttributesToRender (HtmlTextWriter writer)
@@ -104,6 +109,9 @@ namespace diagrammy
 			this.RenderChildren (writer);
 			writer.RenderEndTag ();
 			this.save.RenderControl (writer);
+			writer.AddAttribute(HtmlTextWriterAttribute.Id, "diagrammy-status");
+			writer.RenderBeginTag(HtmlTextWriterTag.Div);
+			writer.RenderEndTag();
 
 			// Libraries
 			writer.Write("<script src='" + cs.GetWebResourceUrl(scriptType, "diagrammy.lib.jquery-2.1.0.js") + "'></script>");
@@ -112,7 +120,7 @@ namespace diagrammy
 
 			// Diagrammy scripts
 			writer.Write ("<script src='" + cs.GetWebResourceUrl (scriptType, diaScriptName) + "'></script>");
-			writer.Write ("<script type='text/javascript'>" + this.JsonData + "</script>");
+			writer.Write ("<script type='text/javascript'>Diagrammy.data = " + this.ToJson() + ";</script>");
 		}
 
 		protected override HtmlTextWriterTag TagKey

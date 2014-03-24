@@ -10,6 +10,7 @@ namespace diagrammy
 	{
 		public SaveButton() : base() 
 		{
+			this.ID = "diagrammy-save-button";
 			this.Text = "Save";
 			this.OnClientClick = "Diagrammy.save()";
 		}

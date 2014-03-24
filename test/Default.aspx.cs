@@ -45,8 +45,10 @@ namespace test
 		}
 
 		[WebMethod]
-		public static string DelegateDiagramData(string example) {
-			return example;
+		public static string DelegateDiagramData(Object diagram) {
+			//Diagram dia = new Diagram(diagram);
+
+			return "It has been saved.";
 		}
 	}
 }

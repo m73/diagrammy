@@ -52,6 +52,8 @@
     <EmbeddedResource Include="js\diagrammy.js" />
     <EmbeddedResource Include="lib\jquery.jsPlumb-1.5.5.js" />
     <EmbeddedResource Include="css\demochart.css" />
+    <EmbeddedResource Include="lib\jquery.ui.touch-punch.js" />
+    <EmbeddedResource Include="lib\jquery-2.1.0.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />

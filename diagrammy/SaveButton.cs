@@ -11,7 +11,7 @@ namespace diagrammy
 		public SaveButton() : base() 
 		{
 			this.Text = "Save";
-			this.OnClientClick = "Diagram.save()";
+			this.OnClientClick = "Diagrammy.save()";
 		}
 
 		protected override void OnClick (EventArgs e)

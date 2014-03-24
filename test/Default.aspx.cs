@@ -5,6 +5,7 @@ namespace test
 	using System.Web;
 	using System.Web.UI;
 	using System.Web.UI.WebControls;
+	using System.Web.Services;
 	using diagrammy;
 
 	public partial class Default : System.Web.UI.Page
@@ -34,7 +35,7 @@ namespace test
 			Button load = new Button();
 			load.Text = "Load";
 			load.Click += onLoadClick;
-			this.Form.Controls.Add(dia);
+			this.Controls.Add(dia);
 			this.Form.Controls.Add(load);
 		}
 
@@ -43,5 +44,9 @@ namespace test
 			// Load saved diagram here.
 		}
 
+		[WebMethod]
+		public static string DelegateDiagramData(string example) {
+			return example;
+		}
 	}
 }

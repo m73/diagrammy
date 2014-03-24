@@ -15,6 +15,8 @@ using System.Web.UI;
 // Add client side files.
 [assembly: WebResource("diagrammy.css.demochart.css", "text/css")]
 [assembly: WebResource("diagrammy.css.nodes.css", "text/css")]
+[assembly: WebResource("diagrammy.lib.jquery-2.1.0.js", "application/javascript")]
+[assembly: WebResource("diagrammy.lib.jquery.ui.touch-punch.js", "application/javascript")]
 [assembly: WebResource("diagrammy.lib.jquery.jsPlumb-1.5.5.js", "application/javascript")]
 [assembly: WebResource("diagrammy.js.diagrammy.js", "application/javascript")]
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

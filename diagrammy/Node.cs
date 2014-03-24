@@ -8,26 +8,40 @@ namespace diagrammy
 	using System.Collections.Generic;
 
 	/// <summary>
-	/// A node instance which can be added to a diagram.
+	/// Nodes of a Diagram, basically styled divs with a NodeType and properties such as label.
 	/// </summary>
 	public class Node : WebControl
 	{
-		public NodeType NodeType; // Rules and styles for this particular node.
+		/// <summary>
+		/// Type of the node which controls its behavior.
+		/// </summary>
+		public NodeType NodeType;
+
+		/// <summary>
+		/// Serializable properties of the node, i.e. what gets converted to json.
+		/// </summary>
 		public NodeProperties Properties;
 
 		public Node(string label, NodeType NodeType) : base() 
 		{
 			this.NodeType = NodeType;
-			this.Properties = new NodeProperties (label, NodeType.GetHashCode());
+			this.Properties = new NodeProperties (label, NodeType.GetHashCode()); // Contain only number reference on json side.
 		}
 
 		/// <summary>
 		/// Make connection between this node to another node.
 		/// </summary>
-		/// <param name="Node">Node.</param>
-		public void Connect(Node Node) {
-			this.Properties.Out.Add (Node.Properties.GetHashCode());
-			Node.Properties.In.Add (this.Properties.GetHashCode());
+		public void Connect(Node node) {
+			this.Properties.Out.Add (node.Properties.GetHashCode());
+			node.Properties.In.Add (this.Properties.GetHashCode());
+		}
+
+		/// <summary>
+		/// Remove connection between this node to another node.
+		/// </summary>
+		public void Disconnect(Node node) {
+			this.Properties.Out.Remove(node.Properties.GetHashCode());
+			node.Properties.In.Remove(this.Properties.GetHashCode());
 		}
 
 		/// <summary>

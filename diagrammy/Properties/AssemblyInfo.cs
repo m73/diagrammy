@@ -13,12 +13,10 @@ using System.Web.UI;
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 // Add client side files.
-[assembly: WebResource("diagrammy.css.demo-all.css", "text/css")]
-[assembly: WebResource("diagrammy.css.demo.css", "text/css")]
-[assembly: WebResource("diagrammy.lib.jquery.jsPlumb-1.5.5.js", "application/javascript")]
-[assembly: WebResource("diagrammy.js.demo.js", "application/javascript")]
-[assembly: WebResource("diagrammy.js.diagrammy.js", "application/javascript")]
+[assembly: WebResource("diagrammy.css.demochart.css", "text/css")]
 [assembly: WebResource("diagrammy.css.nodes.css", "text/css")]
+[assembly: WebResource("diagrammy.lib.jquery.jsPlumb-1.5.5.js", "application/javascript")]
+[assembly: WebResource("diagrammy.js.diagrammy.js", "application/javascript")]
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.

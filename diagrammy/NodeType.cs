@@ -3,17 +3,34 @@ using System;
 namespace diagrammy
 {
 	using System.Collections.Generic;
-
-	// An instance of this class defines rules and style of a single diagram node
-	// which gets connected to other nodes.
-	public class NodeType {
-		// Node allowed to connect to/from this node and how many(int) of them can connect/be connected.
-		// If int is n, and n > 0, 1 to n can be connected. Otherwise any number can be connected.
+	
+	/// <summary>
+	/// Defines rules (behavior) and styles for Nodes that contain it as their NodeType. <br/>
+	/// Its properties are serializable for conversion to json.
+	/// </summary>
+	public class NodeType 
+	{
+		/// <summary>
+		/// NodeTypes allowed to connect to this NodeType (int is the corresponding NodeType's hash value),<br/>
+		/// and how many such connections can exist (string is "one" or "many").
+		/// </summary>
 		public Dictionary<int, string> inputs;
+
+		/// <summary>
+		/// NodeTypes this NodeType is allowed to connect to (int is the corresponding NodeType's hash value),<br/>
+		/// and how many such connections can exist (string is "one" or "many").
+		/// </summary>
 		public Dictionary<int, string> outputs;
-		public string label; // Label shown on the node on the diagram.
-		public string shape; // Shape as shown on diagram. Can be "circle", "square" or "rectangle".
-		public string color; // Color of node. Can be any CSS color name or hex value, e.g. "Red", "#DC143C".
+
+		/// <summary>
+		/// Shape as shown on diagram. Can be "circle", "square" or "rectangle".
+		/// </summary>
+		public string shape;
+
+		/// <summary>
+		/// Color of node. Can be any CSS color name or hex value, e.g. "Red", "#DC143C".
+		/// </summary>
+		public string color;
 
 		public NodeType(string shape, string color) {
 			this.shape = shape;
@@ -23,59 +40,28 @@ namespace diagrammy
 		}
 
 		/// <summary>
-		/// Puts in a new input rule for a specified NodeType: "many" or "one".
+		/// Puts in a new specified rule (ruleType, "input" or "output") for a specified NodeType,<br/> 
+		/// and how many can connect ("many" or "one"). Overwrites if a rule for nodeType already exists.
 		/// </summary>
-		/// <remarks>
-		/// Usage: x = a.InputRule(b, m)<br/>
-		/// Before:<br/>
-		/// After: If m is supplied and is not "none", b is now in a.inputs and x = m. If m was supplied or is "none",<br/>
-		/// 	   x is the amount in a.inputs associated with b or "none" if it wasn't found.<br/>
-		/// </remarks>
-		/// <returns>The rule.</returns>
-		/// <param name="nt">Nt.</param>
-		/// <param name="amount">Amount.</param>
-		public string InputRule(NodeType NodeType, string amount = "none") 
+		public void AddIORule(NodeType nodeType, string ruleType = "output", string amount = "many")
 		{
-			int key = NodeType.GetHashCode ();
-			if (amount == "none") 
+			int key = nodeType.GetHashCode();
+			Dictionary<int, string> puts = ruleType == "input" ? this.inputs : this.outputs;
+
+			if (puts.ContainsKey(key))
 			{
-				string foundAmount;
-				this.inputs.TryGetValue (key, out foundAmount);
-				return foundAmount;
-			} 
-			else if (!this.inputs.ContainsKey(key))
-			{
-				this.inputs.Add (key, amount);
+				puts.Remove(key);
 			}
-			return amount;
+			puts.Add(key, amount);
 		}
 
 		/// <summary>
-		/// Puts in a new output rule for a specified NodeType: "many" or "one".
+		/// Removes the IO rule for specified nodeType and ruleType.
 		/// </summary>
-		/// <remarks>
-		/// Usage: x = a.OutputRule(b, m)<br/>
-		/// Before:<br/>
-		/// After: If m is supplied and is not "none", b is now in a.outputs and x = m. If m was supplied or is "none",<br/>
-		/// 	   x is the amount in a.outputs associated with b or "none" if it wasn't found.<br/>
-		/// </remarks>
-		/// <returns>The rule.</returns>
-		/// <param name="nt">Nt.</param>
-		/// <param name="amount">Amount.</param>
-		public string OutputRule(NodeType nt, string amount = "none") 
-		{
-			int key = nt.GetHashCode ();
-			if (amount == "none") 
-			{
-				string foundAmount;
-				this.outputs.TryGetValue (key, out foundAmount);
-				return foundAmount;
-			} 
-			else if (!this.inputs.ContainsKey(key))
-			{
-				this.outputs.Add (key, amount);
-			}
-			return amount;
+		public void RemoveIORule(NodeType nodeType, string ruleType = "output") {
+			int key = nodeType.GetHashCode();
+			Dictionary<int, string> puts = ruleType == "input" ? this.inputs : this.outputs;
+			puts.Remove(key);
 		}
 	}
 }

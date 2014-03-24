@@ -19,14 +19,5 @@ namespace diagrammy
 			base.OnClick (e);
 		}
 	}
-
-	public class LoadButton : Button
-	{
-		public LoadButton() : base() 
-		{
-			this.Text = "Load";
-			this.OnClientClick = "Diagram.save()";
-		}
-	}
 }
 

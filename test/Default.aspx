@@ -6,5 +6,8 @@
 	<title>Default</title>
 </head>
 <body>
+	<form runat="server">
+
+	</form>
 </body>
 </html>

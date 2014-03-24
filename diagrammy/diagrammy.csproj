@@ -48,12 +48,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <EmbeddedResource Include="css\demo-all.css" />
-    <EmbeddedResource Include="css\demo.css" />
-    <EmbeddedResource Include="js\demo.js" />
     <EmbeddedResource Include="css\nodes.css" />
     <EmbeddedResource Include="js\diagrammy.js" />
     <EmbeddedResource Include="lib\jquery.jsPlumb-1.5.5.js" />
+    <EmbeddedResource Include="css\demochart.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />

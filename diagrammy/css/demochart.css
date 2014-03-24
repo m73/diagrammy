@@ -72,9 +72,7 @@ font-size:0.9em;
   font-style: normal;
   font-weight: 400;
  	src:local('Open Sans'), 
- 		local('OpenSans'),
- 		url("font/OpenSans-Regular.ttf") format('truetype'),
- 		url("font/OpenSans.woff") format('woff');
+ 		local('OpenSans');
 }
 
 /** PAGE STRUCTURE **/

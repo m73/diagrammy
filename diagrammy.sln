@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diagrammy", "diagrammy\diagrammy.csproj", "{9DFF8A00-B4AA-41D3-BF75-07875CC1023B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unit_tests", "unit_tests\unit_tests.csproj", "{D89DF007-9D61-467E-AC04-64891A5F5AB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{C06CD521-555B-4472-85FC-9FC2CAA65AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C06CD521-555B-4472-85FC-9FC2CAA65AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C06CD521-555B-4472-85FC-9FC2CAA65AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89DF007-9D61-467E-AC04-64891A5F5AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89DF007-9D61-467E-AC04-64891A5F5AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89DF007-9D61-467E-AC04-64891A5F5AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89DF007-9D61-467E-AC04-64891A5F5AB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = test\test.csproj

@@ -14,29 +14,41 @@ namespace diagrammy
 		/// NodeTypes allowed to connect to this NodeType (int is the corresponding NodeType's hash value),<br/>
 		/// and how many such connections can exist (string is "one" or "many").
 		/// </summary>
-		public Dictionary<int, string> inputs;
+		public Dictionary<string, string> Inputs;
 
 		/// <summary>
 		/// NodeTypes this NodeType is allowed to connect to (int is the corresponding NodeType's hash value),<br/>
 		/// and how many such connections can exist (string is "one" or "many").
 		/// </summary>
-		public Dictionary<int, string> outputs;
+		public Dictionary<string, string> Outputs;
 
 		/// <summary>
 		/// Shape as shown on diagram. Can be "circle", "square" or "rectangle".
 		/// </summary>
-		public string shape;
+		public string Shape;
 
 		/// <summary>
 		/// Color of node. Can be any CSS color name or hex value, e.g. "Red", "#DC143C".
 		/// </summary>
-		public string color;
+		public string Color;
+
+		/// <summary>
+		/// Next ID that a new instance will get.
+		/// </summary>
+		private static int NextID = 0;
+
+		/// <summary>
+		/// Unique ID for this NodeType.
+		/// </summary>
+		public string ID;
 
 		public NodeType(string shape, string color) {
-			this.shape = shape;
-			this.color = color;
-			inputs = new Dictionary<int, string> ();
-			outputs = new Dictionary<int, string> ();
+			this.Shape = shape;
+			this.Color = color;
+			Inputs = new Dictionary<string, string> ();
+			Outputs = new Dictionary<string, string> ();
+			this.ID = "diagrammy-nodetype" + NextID.ToString();
+			NextID++;
 		}
 
 		/// <summary>
@@ -45,23 +57,21 @@ namespace diagrammy
 		/// </summary>
 		public void AddIORule(NodeType nodeType, string ruleType = "output", string amount = "many")
 		{
-			int key = nodeType.GetHashCode();
-			Dictionary<int, string> puts = ruleType == "input" ? this.inputs : this.outputs;
+			Dictionary<string, string> puts = ruleType == "input" ? this.Inputs : this.Outputs;
 
-			if (puts.ContainsKey(key))
+			if (puts.ContainsKey(nodeType.ID))
 			{
-				puts.Remove(key);
+				puts.Remove(nodeType.ID);
 			}
-			puts.Add(key, amount);
+			puts.Add(nodeType.ID, amount);
 		}
 
 		/// <summary>
 		/// Removes the IO rule for specified nodeType and ruleType.
 		/// </summary>
 		public void RemoveIORule(NodeType nodeType, string ruleType = "output") {
-			int key = nodeType.GetHashCode();
-			Dictionary<int, string> puts = ruleType == "input" ? this.inputs : this.outputs;
-			puts.Remove(key);
+			Dictionary<string, string> puts = ruleType == "input" ? this.Inputs : this.Outputs;
+			puts.Remove(nodeType.ID);
 		}
 	}
 }

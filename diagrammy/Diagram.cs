@@ -36,16 +36,16 @@ namespace diagrammy
 		/// </summary>
 		/// <param name="node">Node.</param>
 		public void AddNode(Node Node) 
-		{
-			int NodeTypeHash = Node.NodeType.GetHashCode ();
-			int NodeHash = Node.Properties.GetHashCode ();
-			if (!this.Properties.NodeTypes.ContainsKey (NodeTypeHash)) 
+		{ 
+			string NodeTypeID = Node.NodeType.ID;
+			string NodeID = Node.Properties.ID;
+			if (!this.Properties.NodeTypes.ContainsKey (NodeTypeID)) 
 			{
-				this.Properties.NodeTypes.Add (NodeTypeHash, Node.NodeType);
+				this.Properties.NodeTypes.Add (NodeTypeID, Node.NodeType);
 			}
-			if (!this.Properties.Nodes.ContainsKey (NodeHash)) 
+			if (!this.Properties.Nodes.ContainsKey (NodeID)) 
 			{
-				this.Properties.Nodes.Add (NodeHash, Node.Properties);
+				this.Properties.Nodes.Add (NodeID, Node.Properties);
 				this.Controls.Add (Node);
 			}
 		}
@@ -133,13 +133,13 @@ namespace diagrammy
 
 	public class DiagramProperties
 	{
-		public Dictionary<int, NodeType> NodeTypes;
-		public Dictionary<int, NodeProperties> Nodes;
+		public Dictionary<string, NodeType> NodeTypes;
+		public Dictionary<string, NodeProperties> Nodes;
 
 		public DiagramProperties() 
 		{
-			this.NodeTypes = new Dictionary<int, NodeType> ();
-			this.Nodes = new Dictionary<int, NodeProperties> ();
+			this.NodeTypes = new Dictionary<string, NodeType> ();
+			this.Nodes = new Dictionary<string, NodeProperties> ();
 		}
 	}
 }

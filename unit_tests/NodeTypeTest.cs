@@ -15,11 +15,11 @@ namespace unit_tests
 			NodeType NodeType2 = new NodeType("circle", "brown");
 			NodeType1.AddIORule(NodeType2, "input", "one");
 
-			Assert.IsTrue(NodeType1.inputs.ContainsKey(NodeType2.GetHashCode()));
-			Assert.IsTrue(NodeType1.inputs.ContainsValue("one"));
+			Assert.IsTrue(NodeType1.Inputs.ContainsKey(NodeType2.ID));
+			Assert.IsTrue(NodeType1.Inputs.ContainsValue("one"));
 			NodeType1.RemoveIORule(NodeType2, "input");
-			Assert.IsFalse(NodeType1.inputs.ContainsKey(NodeType2.GetHashCode()));
-			Assert.IsFalse(NodeType1.inputs.ContainsValue("one"));
+			Assert.IsFalse(NodeType1.Inputs.ContainsKey(NodeType2.ID));
+			Assert.IsFalse(NodeType1.Inputs.ContainsValue("one"));
 		}
 	}
 }

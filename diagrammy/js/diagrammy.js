@@ -1,5 +1,3 @@
-Diagrammy = {};
-
 (function() {
     Diagrammy.save = function() {
         $.ajax({

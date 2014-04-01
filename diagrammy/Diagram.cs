@@ -119,8 +119,8 @@ namespace diagrammy
 			writer.Write("<script src='" + cs.GetWebResourceUrl(scriptType, plumbScriptName) + "'></script>");
 
 			// Diagrammy scripts
+			writer.Write ("<script type='text/javascript'>Diagrammy = {}; Diagrammy.data = " + this.ToJson() + ";</script>");
 			writer.Write ("<script src='" + cs.GetWebResourceUrl (scriptType, diaScriptName) + "'></script>");
-			writer.Write ("<script type='text/javascript'>Diagrammy.data = " + this.ToJson() + ";</script>");
 		}
 
 		protected override HtmlTextWriterTag TagKey

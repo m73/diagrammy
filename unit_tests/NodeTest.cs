@@ -11,8 +11,8 @@ namespace unit_tests
 		[Test ()]
 		public void ConnectTest ()
 		{
-			Node node1 = new Node("NiceNode", new NodeType("circle", "purple"));
-			Node node2 = new Node("BadNode", new NodeType("square", "red"));
+			Node node1 = new Node(new NodeProperties("NiceNode"), new NodeType("circle", "purple"));
+			Node node2 = new Node(new NodeProperties("BadNode"), new NodeType("square", "red"));
 			node1.Connect(node2);
 			Assert.IsTrue(node1.Properties.Out.Contains(node2.Properties.ID));
 			Assert.IsTrue(node2.Properties.In.Contains(node1.Properties.ID));

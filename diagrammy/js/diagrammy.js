@@ -3,7 +3,7 @@
         $.ajax({
             type: "POST",
             url: "Default.aspx/DelegateDiagramData",
-            data: JSON.stringify({ diagram: Diagrammy.data }), // We send json representation of client side diagram here.
+            data: JSON.stringify({ diagram: JSON.stringify(Diagrammy.data) }), // We send json representation of client side diagram here.
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data, textStatus, jqXHR) { // We give a success message/sign to user here.

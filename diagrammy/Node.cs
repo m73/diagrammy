@@ -22,10 +22,11 @@ namespace diagrammy
 		/// </summary>
 		public NodeProperties Properties;
 
-		public Node(string label, NodeType NodeType) : base() 
+		public Node(NodeProperties nodeProperties, NodeType nodeType) : base() 
 		{
-			this.NodeType = NodeType;
-			this.Properties = new NodeProperties (label, NodeType.ID); // Contain only number reference on json side.
+			this.NodeType = nodeType;
+			this.Properties = nodeProperties;
+			this.Properties.NodeTypeID = this.NodeType.ID;
 		}
 
 		/// <summary>
@@ -70,7 +71,7 @@ namespace diagrammy
 	}
 
 	/// <summary>
-	/// Properties of a node which may be used on the client side.
+	/// Properties of a node which may be used on the client side. It is meant to be unique for a given node.
 	/// </summary>
 	public class NodeProperties {
 
@@ -81,11 +82,11 @@ namespace diagrammy
 		private static int NextID;
 		public string ID;
 
-		public NodeProperties(string Label, string NodeTypeID) {
+		public NodeProperties(string Label, string nodeTypeID = "") {
 			this.Out = new HashSet<string>();
 			this.In = new HashSet<string> ();
 			this.Label = Label;
-			this.NodeTypeID = NodeTypeID;
+			this.NodeTypeID = nodeTypeID;
 			this.ID = "diagrammy-node" + NextID.ToString();
 			NextID++;
 		}

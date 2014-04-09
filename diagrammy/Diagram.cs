@@ -19,13 +19,13 @@ namespace diagrammy
 		public SaveButton save;
 		private DiagramProperties Properties; // Serializable object presenting all of its data.
 
-		public Diagram(Object objectDiagram = null) : base() 
+		public Diagram(String jsonDiagram = "") : base() 
 		{
 			this.CreateControlCollection ();
 			this.save = new SaveButton ();
 			this.Properties = new DiagramProperties ();
-			if (objectDiagram != null) {
-				this.BuildFromObject(objectDiagram);
+			if (jsonDiagram != "") {
+				this.BuildFromJson(jsonDiagram);
 			}
 		}
 
@@ -58,10 +58,19 @@ namespace diagrammy
 		}
 
 		/// <summary>
-		/// Make this diagram mirror the diagram represented by the json string.
+		/// Make this diagram mirror the diagram represented by the json.
 		/// </summary>
-		private void BuildFromObject(Object objectDiagram) {
+		private void BuildFromJson(String jsonDiagram) {
 
+			this.Properties = JsonConvert.DeserializeObject<DiagramProperties>(jsonDiagram);
+
+			NodeProperties nodeProps;
+			NodeType nodeType;
+			foreach(KeyValuePair<string, NodeProperties> item in this.Properties.Nodes) {
+				nodeProps = item.Value;
+				nodeType = this.Properties.NodeTypes[nodeProps.NodeTypeID];
+				this.Controls.Add(new Node(nodeProps, nodeType));
+			}
 		}
 
 		protected override void RenderChildren(HtmlTextWriter writer) 
@@ -131,9 +140,22 @@ namespace diagrammy
 		}
 	}
 
+	/// <summary>
+	/// This gets serialized as a json representation of the diagram to be used on the client side.
+	/// </summary>
 	public class DiagramProperties
 	{
+		/// <summary>
+		/// Distinct NodeTypes present in the Nodes of this Diagram. The key for a given
+		/// NodeType is NodeType.ID.
+		/// </summary>
 		public Dictionary<string, NodeType> NodeTypes;
+
+
+		/// <summary>
+		/// The serializable part of the Nodes in this Diagram. The key for a given NodeProperties is
+		/// NodeProperties.ID.
+		/// </summary>
 		public Dictionary<string, NodeProperties> Nodes;
 
 		public DiagramProperties() 

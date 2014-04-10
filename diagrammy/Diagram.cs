@@ -38,14 +38,14 @@ namespace diagrammy
 		public void AddNode(Node Node) 
 		{ 
 			string NodeTypeID = Node.NodeType.ID;
-			string NodeID = Node.Properties.ID;
+			string NodeID = Node.ID;
 			if (!this.Properties.NodeTypes.ContainsKey (NodeTypeID)) 
 			{
 				this.Properties.NodeTypes.Add (NodeTypeID, Node.NodeType);
 			}
 			if (!this.Properties.Nodes.ContainsKey (NodeID)) 
 			{
-				this.Properties.Nodes.Add (NodeID, Node.Properties);
+				this.Properties.Nodes.Add (NodeID, Node);
 				this.Controls.Add (Node);
 			}
 		}
@@ -62,15 +62,20 @@ namespace diagrammy
 		/// </summary>
 		private void BuildFromJson(String jsonDiagram) {
 
-			this.Properties = JsonConvert.DeserializeObject<DiagramProperties>(jsonDiagram);
+			Console.WriteLine(jsonDiagram);
+			//this.Properties = JsonConvert.DeserializeObject<DiagramProperties>(jsonDiagram);
 
-			NodeProperties nodeProps;
+			// Reattach NodeType property to node and add node controls. 
+			/*
+			Node node;
 			NodeType nodeType;
-			foreach(KeyValuePair<string, NodeProperties> item in this.Properties.Nodes) {
-				nodeProps = item.Value;
-				nodeType = this.Properties.NodeTypes[nodeProps.NodeTypeID];
-				this.Controls.Add(new Node(nodeProps, nodeType));
+			foreach(KeyValuePair<string, Node> item in this.Properties.Nodes) {
+				node = item.Value;
+				nodeType = this.Properties.NodeTypes[node.NodeTypeID];
+				node.NodeType = nodeType;
+				this.Controls.Add(node);
 			}
+			*/
 		}
 
 		protected override void RenderChildren(HtmlTextWriter writer) 
@@ -156,12 +161,12 @@ namespace diagrammy
 		/// The serializable part of the Nodes in this Diagram. The key for a given NodeProperties is
 		/// NodeProperties.ID.
 		/// </summary>
-		public Dictionary<string, NodeProperties> Nodes;
+		public Dictionary<string, Node> Nodes;
 
 		public DiagramProperties() 
 		{
 			this.NodeTypes = new Dictionary<string, NodeType> ();
-			this.Nodes = new Dictionary<string, NodeProperties> ();
+			this.Nodes = new Dictionary<string, Node> ();
 		}
 	}
 }

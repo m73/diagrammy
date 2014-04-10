@@ -27,10 +27,10 @@ namespace test
 			NodeType building = new NodeType ("square", "grey");
 			electroMeter.AddIORule (building, "input", "one");
 			building.AddIORule (electroMeter, "output", "one");
-			Node eo = new Node (new NodeProperties("M?"), electroMeter); 
-			Node myHouse = new Node(new NodeProperties("My house"), building);
-			Node otherHouse = new Node (new NodeProperties("Other house"), building);
-			Node eo2 = new Node (new NodeProperties("M10"), electroMeter);
+			Node eo = new Node ("M?", electroMeter); 
+			Node myHouse = new Node("My house", building);
+			Node otherHouse = new Node ("Other house", building);
+			Node eo2 = new Node ("M10", electroMeter);
 			eo.Connect (myHouse);
 			otherHouse.Connect (eo);
 			dia.AddNode (eo);

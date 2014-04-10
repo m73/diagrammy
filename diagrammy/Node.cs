@@ -6,10 +6,13 @@ namespace diagrammy
 	using System.Web.UI;
 	using System.Web.UI.WebControls;
 	using System.Collections.Generic;
+	using System.Runtime.Serialization;
+	using Newtonsoft.Json;
 
 	/// <summary>
 	/// Nodes of a Diagram, basically styled divs with a NodeType and properties such as label.
 	/// </summary>
+	[JsonObject(MemberSerialization.OptIn)]
 	public class Node : WebControl
 	{
 		/// <summary>
@@ -18,31 +21,54 @@ namespace diagrammy
 		public NodeType NodeType;
 
 		/// <summary>
-		/// Serializable properties of the node, i.e. what gets converted to json.
+		/// The ID for the next instance of this class.
 		/// </summary>
-		public NodeProperties Properties;
+		private static int NextID;
+		private string _id;
+		public override string ID {
+			get { return _id; }
+		}
 
-		public Node(NodeProperties nodeProperties, NodeType nodeType) : base() 
+		// Properties appearing in this object's serialized equivalent.
+		[JsonProperty]
+		public HashSet<string> In;
+		[JsonProperty]
+		public HashSet<string> Out;
+		[JsonProperty]
+		public string Label;
+		[JsonProperty]
+		public string NodeTypeID;
+
+		public Node(string Label, NodeType nodeType) : base() 
 		{
 			this.NodeType = nodeType;
-			this.Properties = nodeProperties;
-			this.Properties.NodeTypeID = this.NodeType.ID;
+			this.Label = Label;
+			this.NodeTypeID = this.NodeType.ID;
+			this.Out = new HashSet<string>();
+			this.In = new HashSet<string> ();
+			this._id = "diagrammy-node" + NextID.ToString();
+			NextID++;
 		}
+
+		[OnDeserializing]
+		internal void OnDeserializing(StreamingContext context) {
+			
+		} 
 
 		/// <summary>
 		/// Make connection between this node to another node.
 		/// </summary>
 		public void Connect(Node node) {
-			this.Properties.Out.Add (node.Properties.ID);
-			node.Properties.In.Add (this.Properties.ID);
+			this.Out.Add (node.ID);
+			node.In.Add (this.ID);
 		}
 
 		/// <summary>
 		/// Remove connection between this node to another node.
 		/// </summary>
 		public void Disconnect(Node node) {
-			this.Properties.Out.Remove(node.Properties.ID);
-			node.Properties.In.Remove(this.Properties.ID);
+			this.Out.Remove(node.ID);
+			node.In.Remove(this.ID);
 		}
 
 		/// <summary>
@@ -53,14 +79,14 @@ namespace diagrammy
 			string classes = "diagrammy-"+this.NodeType.Shape;
 
 			writer.AddAttribute (HtmlTextWriterAttribute.Class, classes);
-			writer.AddAttribute (HtmlTextWriterAttribute.Id, this.Properties.ID);
+			writer.AddAttribute (HtmlTextWriterAttribute.Id, this.ID);
 			writer.AddAttribute (HtmlTextWriterAttribute.Style, "background: " + this.NodeType.Color);
 		}
 
 		// What is rendered inside this Node (i.e. inside the div it represents).
 		protected override void RenderContents(HtmlTextWriter writer) 
 		{
-			writer.Write (this.Properties.Label);
+			writer.Write (this.Label);
 		}
 
 		protected override HtmlTextWriterTag TagKey {
@@ -70,26 +96,5 @@ namespace diagrammy
 		}
 	}
 
-	/// <summary>
-	/// Properties of a node which may be used on the client side. It is meant to be unique for a given node.
-	/// </summary>
-	public class NodeProperties {
-
-		public HashSet<string> In;
-		public HashSet<string> Out;
-		public string Label;
-		public string NodeTypeID;
-		private static int NextID;
-		public string ID;
-
-		public NodeProperties(string Label, string nodeTypeID = "") {
-			this.Out = new HashSet<string>();
-			this.In = new HashSet<string> ();
-			this.Label = Label;
-			this.NodeTypeID = nodeTypeID;
-			this.ID = "diagrammy-node" + NextID.ToString();
-			NextID++;
-		}
-	}
 }
 

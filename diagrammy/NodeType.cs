@@ -3,6 +3,7 @@ using System;
 namespace diagrammy
 {
 	using System.Collections.Generic;
+	using Newtonsoft.Json;
 	
 	/// <summary>
 	/// Defines rules (behavior) and styles for Nodes that contain it as their NodeType. <br/>
@@ -11,13 +12,13 @@ namespace diagrammy
 	public class NodeType 
 	{
 		/// <summary>
-		/// NodeTypes allowed to connect to this NodeType (int is the corresponding NodeType's hash value),<br/>
+		/// NodeTypes allowed to connect to this NodeType (int is the corresponding NodeType's id value),<br/>
 		/// and how many such connections can exist (string is "one" or "many").
 		/// </summary>
 		public Dictionary<string, string> Inputs;
 
 		/// <summary>
-		/// NodeTypes this NodeType is allowed to connect to (int is the corresponding NodeType's hash value),<br/>
+		/// NodeTypes this NodeType is allowed to connect to (int is the corresponding NodeType's id value),<br/>
 		/// and how many such connections can exist (string is "one" or "many").
 		/// </summary>
 		public Dictionary<string, string> Outputs;
@@ -40,6 +41,7 @@ namespace diagrammy
 		/// <summary>
 		/// Unique ID for this NodeType.
 		/// </summary>
+		[JsonIgnore]
 		public string ID;
 
 		public NodeType(string shape, string color) {

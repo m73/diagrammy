@@ -35,7 +35,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\..\Program Files %28x86%29\Xamarin Studio\bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>dlls\Net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +67,9 @@
       <Visible>False</Visible>
     </None>
     <None Include="something.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="dlls\Net45\Newtonsoft.Json.xml">
       <Visible>False</Visible>
     </None>
   </ItemGroup>

@@ -9,6 +9,7 @@ namespace diagrammy
 	/// Defines rules (behavior) and styles for Nodes that contain it as their NodeType. <br/>
 	/// Its properties are serializable for conversion to json.
 	/// </summary>
+	[JsonObject(IsReference = true)]
 	public class NodeType 
 	{
 		/// <summary>

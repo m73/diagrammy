@@ -18,16 +18,14 @@ namespace diagrammy
 		/// <summary>
 		/// Type of the node which controls its behavior.
 		/// </summary>
+		[JsonProperty]
 		public NodeType NodeType;
 
 		/// <summary>
 		/// The ID for the next instance of this class.
 		/// </summary>
 		private static int NextID;
-		private string _id;
-		public override string ID {
-			get { return _id; }
-		}
+		public override string ID { get; set; }
 
 		// Properties appearing in this object's serialized equivalent.
 		[JsonProperty]
@@ -37,23 +35,18 @@ namespace diagrammy
 		[JsonProperty]
 		public string Label;
 		[JsonProperty]
-		public string NodeTypeID;
+		public string TypeKey;
 
 		public Node(string Label, NodeType nodeType) : base() 
 		{
 			this.NodeType = nodeType;
 			this.Label = Label;
-			this.NodeTypeID = this.NodeType.ID;
+			this.TypeKey = this.NodeType.ID;
 			this.Out = new HashSet<string>();
 			this.In = new HashSet<string> ();
-			this._id = "diagrammy-node" + NextID.ToString();
+			this.ID = "diagrammy-node" + NextID.ToString();
 			NextID++;
 		}
-
-		[OnDeserializing]
-		internal void OnDeserializing(StreamingContext context) {
-			
-		} 
 
 		/// <summary>
 		/// Make connection between this node to another node.

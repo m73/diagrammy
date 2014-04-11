@@ -34,6 +34,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\diagrammy\dlls\Net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NodeTest.cs" />

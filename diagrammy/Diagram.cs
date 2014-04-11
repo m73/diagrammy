@@ -6,27 +6,40 @@ namespace diagrammy
 	using System.Web.UI;
 	using System.Web.UI.WebControls;
 	using System.Collections.Generic;
+	using System.Runtime.Serialization;
 	using Newtonsoft.Json;
+	using Newtonsoft.Json.Serialization;
 
 	/// <summary>
 	/// Top tier Diagram component that can be placed in a page.
 	/// </summary>
+	[JsonObject(MemberSerialization.OptIn)]
     public class Diagram : WebControl
 	{
 		/// <summary>
 		/// Sends back altered diagram state in ajax manner.
 		/// </summary>
 		public SaveButton save;
-		private DiagramProperties Properties; // Serializable object presenting all of its data.
 
-		public Diagram(String jsonDiagram = "") : base() 
+		/// <summary>
+		/// Distinct NodeTypes present in the Nodes of this Diagram. The key for a given
+		/// NodeType is NodeType.ID.
+		/// </summary>
+		[JsonProperty]
+		public Dictionary<string, NodeType> NodeTypes;
+
+		/// <summary>
+		/// Nodes in this Diagram. The key for a given Node is Node.ID.
+		/// </summary>
+		[JsonProperty]
+		public Dictionary<string, Node> Nodes;
+
+		public Diagram() : base() 
 		{
-			this.CreateControlCollection ();
+			this.NodeTypes = new Dictionary<string, NodeType> ();
+			this.Nodes = new Dictionary<string, Node> ();
 			this.save = new SaveButton ();
-			this.Properties = new DiagramProperties ();
-			if (jsonDiagram != "") {
-				this.BuildFromJson(jsonDiagram);
-			}
+			this.CreateControlCollection ();
 		}
 
 		/// <summary>
@@ -39,13 +52,13 @@ namespace diagrammy
 		{ 
 			string NodeTypeID = Node.NodeType.ID;
 			string NodeID = Node.ID;
-			if (!this.Properties.NodeTypes.ContainsKey (NodeTypeID)) 
+			if (!this.NodeTypes.ContainsKey (NodeTypeID)) 
 			{
-				this.Properties.NodeTypes.Add (NodeTypeID, Node.NodeType);
+				this.NodeTypes.Add (NodeTypeID, Node.NodeType);
 			}
-			if (!this.Properties.Nodes.ContainsKey (NodeID)) 
+			if (!this.Nodes.ContainsKey (NodeID)) 
 			{
-				this.Properties.Nodes.Add (NodeID, Node);
+				this.Nodes.Add (NodeID, Node);
 				this.Controls.Add (Node);
 			}
 		}
@@ -53,29 +66,21 @@ namespace diagrammy
 		/// <summary>
 		/// Make a json string representing the diagram. 
 		/// </summary>
-		private string ToJson() {
-			return JsonConvert.SerializeObject(this.Properties);
+		public string ToJson() {
+			return JsonConvert.SerializeObject(this);
 		}
 
 		/// <summary>
-		/// Make this diagram mirror the diagram represented by the json.
+		/// Return a Diagram representation of the Diagram input string.
 		/// </summary>
-		private void BuildFromJson(String jsonDiagram) {
+		public static Diagram BuildFromJson(String jsonDiagram) {
 
-			Console.WriteLine(jsonDiagram);
-			//this.Properties = JsonConvert.DeserializeObject<DiagramProperties>(jsonDiagram);
-
-			// Reattach NodeType property to node and add node controls. 
-			/*
-			Node node;
-			NodeType nodeType;
-			foreach(KeyValuePair<string, Node> item in this.Properties.Nodes) {
-				node = item.Value;
-				nodeType = this.Properties.NodeTypes[node.NodeTypeID];
-				node.NodeType = nodeType;
-				this.Controls.Add(node);
-			}
-			*/
+			return JsonConvert.DeserializeObject<Diagram>(jsonDiagram, new JsonSerializerSettings {
+				Error = delegate(object sender, ErrorEventArgs args) {
+					Console.WriteLine("Deserializing Error: " + args.ErrorContext.Error.Message);
+					args.ErrorContext.Handled = true;
+				}
+			});
 		}
 
 		protected override void RenderChildren(HtmlTextWriter writer) 
@@ -142,31 +147,6 @@ namespace diagrammy
 			get {
 				return HtmlTextWriterTag.Div;
 			}
-		}
-	}
-
-	/// <summary>
-	/// This gets serialized as a json representation of the diagram to be used on the client side.
-	/// </summary>
-	public class DiagramProperties
-	{
-		/// <summary>
-		/// Distinct NodeTypes present in the Nodes of this Diagram. The key for a given
-		/// NodeType is NodeType.ID.
-		/// </summary>
-		public Dictionary<string, NodeType> NodeTypes;
-
-
-		/// <summary>
-		/// The serializable part of the Nodes in this Diagram. The key for a given NodeProperties is
-		/// NodeProperties.ID.
-		/// </summary>
-		public Dictionary<string, Node> Nodes;
-
-		public DiagramProperties() 
-		{
-			this.NodeTypes = new Dictionary<string, NodeType> ();
-			this.Nodes = new Dictionary<string, Node> ();
 		}
 	}
 }

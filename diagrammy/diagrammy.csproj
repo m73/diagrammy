@@ -35,7 +35,8 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>dlls\Net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+      <Package>monodevelop</Package>
     </Reference>
   </ItemGroup>
   <ItemGroup>
